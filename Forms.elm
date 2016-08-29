@@ -44,11 +44,11 @@ initialModel =
 
 view : Model -> Html Msg
 view model =
-    Html.form [ class "pure-form pure-form-aligned " ]
+    Html.form [ class "pure-form pure-form-aligned" ]
         [ fieldset []
             [ div [ class "pure-control-group" ]
                 [ label [ for "zipcode" ] [ text "Zip Code" ]
-                , input [ id "zipcode", type' "text", placeholder "Zip Code" ] []
+                , input [ id "zipcode", type' "text", placeholder "Zip Code", classList [ ( "input-invalid", not (Zipcode.isValid model.zipcodeEntry) ) ], onInput ZipCodeChanged ] []
                 ]
             ]
         ]
